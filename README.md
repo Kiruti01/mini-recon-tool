@@ -6,8 +6,7 @@ A lightweight web application that helps operations and treasury teams reconcile
 
 ## 🚀 Live Demo
 
-👉 [View Live App](https://your-deployment-link.com)  
-_(Replace with your Netlify, Vercel, or GitHub Pages link)_
+👉 [View Live App](https://mini-recon-tool.vercel.app/)
 
 ---
 
@@ -94,6 +93,6 @@ This project is for demonstration purposes as part of a technical assessment for
 
 ## 👤 Author
 
-**Michael Kiruti**
+## **Michael Kiruti**
 
-[GitHub](https://github.com/Kiruti01) • [LinkedIn](https://www.linkedin.com/in/michael-kiruti/)
+- [GitHub](https://github.com/Kiruti01) • [LinkedIn](https://www.linkedin.com/in/michael-kiruti/)
