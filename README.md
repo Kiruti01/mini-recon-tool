@@ -90,9 +90,9 @@ Pagination for large files
 📄 License
 This project is for demonstration purposes as part of a technical assessment for Niobi Kenya Ltd.
 
+```
+
 ## 👤 Author
 
 **Michael Kiruti**
 [GitHub](https://github.com/Kiruti01) • [LinkedIn](https://www.linkedin.com/in/michaelkiruti/)
-
-```
