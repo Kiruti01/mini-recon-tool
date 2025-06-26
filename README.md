@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+# 🧾 Mini Reconciliation Tool
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A lightweight web application that helps operations and treasury teams reconcile financial transactions between internal systems and payment provider reports.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Live Demo
 
-### `npm start`
+👉 [View Live App](https://your-deployment-link.com)  
+_(Replace with your Netlify, Vercel, or GitHub Pages link)_
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📦 Features
 
-### `npm test`
+- Upload two CSV files:
+  - **Internal System Export**
+  - **Provider Statement**
+- Reconcile transactions using `transaction_reference`
+- Categorize transactions into:
+  - ✅ Matched
+  - ⚠️ Internal Only
+  - ❌ Provider Only
+- Detect mismatched `amount` or `status`
+- Export each reconciliation result as CSV
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 📁 CSV Format Assumptions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Each CSV file is expected to have the following columns:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+| Column                  | Type   | Description                                           |
+| ----------------------- | ------ | ----------------------------------------------------- |
+| `transaction_reference` | string | Unique transaction ID                                 |
+| `amount`                | number | Amount of transaction                                 |
+| `status`                | string | Status of the transaction (e.g., `success`, `failed`) |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🛠 How It Works
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. User uploads two CSVs via the UI.
+2. The app parses both using `papaparse`.
+3. Reconciliation is performed by matching `transaction_reference` across both datasets.
+4. The output is categorized and rendered in three sections.
+5. Users can export each result table to a CSV file via a single click.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🧪 Sample Reconciliation Logic
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```js
+if (internalRef === providerRef) {
+  if (amount !== providerAmount || status !== providerStatus) {
+    // Mark as Matched but with discrepancies
+  }
+} else {
+  // Categorize as Internal Only or Provider Only
+}
 
-## Learn More
+🛠 Tech Stack
+Frontend: React
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+CSV Parsing: PapaParse
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+CSV Export: FileSaver.js
 
-### Code Splitting
+Styling: Inline CSS
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+🧱 Project Structure
+bash
+Copy
+Edit
+src/
+├── App.jsx          # Main reconciliation logic + UI
+├── index.js         # App entry point
+├── ...              # Other CRA boilerplate
+🚧 Future Improvements
+Drag & drop CSV upload
 
-### Analyzing the Bundle Size
+Support Excel formats (.xlsx)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Save reconciliations in local storage or DB
 
-### Making a Progressive Web App
+Advanced mismatch filtering (e.g., by threshold)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Pagination for large files
 
-### Advanced Configuration
+📄 License
+This project is for demonstration purposes as part of a technical assessment for Niobi Kenya Ltd.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+👤 Author
+Michael Kiruti
+GitHub • LinkedIn
+```
